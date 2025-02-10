@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>SiteName</h2>
+            <button id="sidebar-close" class="sidebar-close">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+        <ul>
+            <li><a href="/admin">Dashboard</a> </li>
+            <li><a href="/create">Users</a></li>
+            <li><a href="/login">Logout</a></li>
+        </ul>
+        <div class="user-profile">
+            <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+            <div class="user-info">
+                <p class="user-name" id="adminName"></p>
+                <p class="user-id" id="adminId"></p>
+            </div>
+        </div>        
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <button id="sidebar-toggle" class="sidebar-toggle">
+                <span class="material-icons">menu</span>
+            </button>
+            <h1>Admin Dashboard</h1>
+            <div class="icons">
+                <div id="notification-icon" class="icon">
+                    <i class="material-icons">notifications</i>
+                </div>
+            </div>
+        </div>
+
+        <div class="cards">
+            <div class="card">Card 1</div>
+            <div class="card">Card 2</div>
+            <div class="card">Card 3</div>
+            <div class="card">Card 4</div>
+        </div>
+
+        <div class="table-controls">
+            <input type="text" id="search-input" placeholder="Search tasks...">
+            <button id="add-task-btn">Assign Task</button>
+        </div>
+
+        <table id="task-table">
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Emp_Id</th>
+                    <th>Name</th>
+                    <th>Work</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="task-table-body">
+                
+            </tbody>
+                        
+        </table>
+    </div>
+
+    <div id="task-popup-form" class="popup-form">
+        <div class="popup-content">
+            <span id="close-task-popup" class="close-btn">&times;</span>
+            <h2>Assign Task</h2>
+            <form id="task-form">
+                <label for="task-emp-id">Employee ID</label>
+                <input type="text" id="task-emp-id" required>
+    
+                <label for="task-name">Name</label>
+                <input type="text" id="task-name" required>
+    
+                <label for="task-work">Work</label>
+                <input type="text" id="task-work" required>
+    
+                <label for="task-date">Date</label>
+                <input type="date" id="task-date" required>
+    
+                <button type="submit">Add Task</button>
+            </form>
+        </div>
+    </div>
+        
+
+    <script src="/js/script.js"></script>
+    <script src="/js/admin.js"></script>
+</body>
+</html>

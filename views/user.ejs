@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>SiteName</h2>
+            <button id="sidebar-close" class="sidebar-close">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+        <ul>
+            <li><a href="/user">Dashboard</a></li>
+            <li><a href="/login">Logout</a></li>
+        </ul>
+        <div class="user-profile">
+            <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
+            <div class="user-info">
+                <p class="user-name" id="userName"></p>
+                <p class="user-id" id="userId"></p>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <button id="sidebar-toggle" class="sidebar-toggle">
+                <span class="material-icons">menu</span>
+            </button>
+            <h1>User Dashboard</h1>
+            <div class="icons">
+                <div id="notification-icon" class="icon">
+                    <i class="material-icons">notifications</i>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-controls">
+            <button id="task-report-btn">Task Report</button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Work</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <!-- Rows will be dynamically added -->
+            </tbody>
+        </table>
+    </div>
+
+    <div id="popup-form" class="popup-form">
+        <div class="popup-content">
+            <span id="close-popup" class="close-btn">&times;</span>
+            <h2>Task Report</h2>
+            <form id="task-form">
+                <label for="work">Work</label>
+                <input type="text" id="work" required>
+                
+                <label for="date">Date</label>
+                <input type="date" id="date" required>
+
+                <label for="status">Status</label>
+                <select id="status">
+                    <option value="Completed">Completed</option>
+                    <option value="Pending">Pending</option>
+                </select>
+                
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/user.js"></script>
+</body>
+</html>

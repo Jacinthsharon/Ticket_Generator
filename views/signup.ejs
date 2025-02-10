@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Sign-Up</h2>
+        <form id="signupForm" method="POST" action="/api/auth/signup">
+            <input type="text" id="name" placeholder="Name" required>
+            <input type="text" id="emp_id" placeholder="Emp_Id" required>
+            <div class="password-container">
+                <input type="password" id="password" placeholder="Password" required>
+                <span class="toggle-password" onclick="togglePasswordVisibility('password')">👁️</span>
+            </div>
+            <div class="password-container">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required>
+                <span class="toggle-password" onclick="togglePasswordVisibility('confirmPassword')">👁️</span>
+            </div>
+            <div class="error-message" id="errorMessage">Passwords do not match!</div>
+            <button type="submit">Sign Up</button>
+            <p>Login as <a href="/login">Admin</a> <a href="/login">User</a></p>
+        </form>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>

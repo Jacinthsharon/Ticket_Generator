@@ -1,0 +1,614 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #070e26;
+    color: white;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    background-color: #0b1739;
+    padding: 20px;
+    position: fixed; 
+    left: 0;
+    top: 0;
+    transform: translateX(0); 
+    transition: transform 0.3s ease;
+}
+
+.sidebar.collapsed {
+    transform: translateX(-100%); 
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.sidebar-close {
+    display: none; 
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: none; 
+}
+
+#menu-icon {
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+    display: none; 
+}
+
+#close-icon {
+    font-size: 30px;
+    cursor: pointer;
+    color: white;
+}
+
+.sidebar.closed {
+    transform: translateX(-100%);
+}
+
+.main-content {
+    margin-left: 250px; 
+    transition: margin-left 0.3s ease;
+}
+
+.main-content.shifted {
+    margin-left: 20px;
+}
+
+.sidebar h2 {
+    color: white;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    padding: 10px 0;
+}
+
+.sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+.sidebar ul li a:hover {
+    background-color: rgba(203, 60, 255, 0.5);
+}
+
+.main-content {
+    margin-left: 300px; 
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #0b1739;
+    padding: 65px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.2em;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.table-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+}
+
+#search-input {
+    flex-grow: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid white;
+    background: #0b1739;
+    color: white;
+    border-radius: 5px;
+}
+
+#add-task-btn {
+    background-color: #cb3cff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+#add-task-btn:hover {
+    background-color: #a02cc4;
+}
+
+#task-report-btn{
+    background-color: #cb3cff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+#task-report-btn:hover {
+    background-color: #a02cc4;
+}
+
+.user-profile {
+    position: absolute;
+    bottom: 70px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+}
+
+.profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.user-name {
+    font-weight: bold;
+    margin-bottom: 2px; 
+}
+
+.user-email {
+    font-size: 15px;
+    opacity: 0.8;
+    margin-top: 0;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #0b1739;
+    border-radius: 10px;
+}
+
+thead {
+    background-color: #cb3cff;
+    display: table-header-group; 
+    width: 100%; 
+
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    white-space: nowrap; 
+
+}
+
+th {
+    background-color: #cb3cff; 
+    color: white;
+    width: auto;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.edit-btn, .save-btn, .delete-btn {
+    background-color: #cb3cff;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 2px;
+    transition: 0.3s ease;
+}
+
+.delete-btn {
+    background-color: red;
+}
+
+.edit-btn:hover, .save-btn:hover {
+    background-color: #a02cc4;
+}
+
+.delete-btn:hover {
+    background-color: darkred;
+}
+
+.popup-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background-color: #0b1739;
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    color: white;
+    text-align: center;
+}
+
+.popup-content form {
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-content input, .popup-content select {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #cb3cff;
+    background-color: #0b1739;
+    color: white;
+}
+
+button[type="submit"] {
+    background-color: #cb3cff;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #a02cc4;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: white;
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.icons {
+    display: flex;
+    gap: 15px;
+}
+
+.icon {
+    cursor: pointer;
+    position: relative;
+    font-size: 1.5em;
+}
+
+.icon i {
+    color: white;
+    font-size: 1.5em; 
+}
+
+.notification-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 0.8em;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #0b1739;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+    z-index: 1000;
+}
+
+.dropdown ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown ul li {
+    padding: 8px 0;
+    color: white;
+    cursor: pointer;
+    font-size: medium;
+}
+
+.dropdown ul li:hover {
+    background-color: rgba(203, 60, 255, 0.5);
+}
+
+.dropdown.active {
+    display: block;
+}
+
+.login-container {
+    margin-top: 100px;
+    background-color: #0b1739;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 370px;
+    text-align: center;
+}
+
+.login-container h2 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.login-container input, .login-container select, .login-container button {
+    width: 350px;;
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    border: 1px solid #cb3cff;
+}
+
+.login-container input, .login-container select {
+    background-color: #070e26;
+    color: white;
+}
+
+.login-container button {
+    background-color: #cb3cff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width:150px;
+}
+
+.login-container button:hover {
+    background-color: #a900d9;
+}
+
+.logo {
+    margin-bottom: 20px;
+}
+
+.logo img {
+    width: 100px;
+}
+
+::placeholder {
+    color: #ccc;
+}
+
+#role{
+    width:370px;  
+}
+
+.signup-container {
+    background-color: #0b1739;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 370px;
+    text-align: center;
+    margin-top: 100px;
+}
+
+.signup-container h2 {
+    margin-bottom: 20px;
+    color: white;
+}
+
+.signup-container input {
+    width: 350px;
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #cb3cff;
+    border-radius: 5px;
+    background-color: #070e26;
+    color: white;
+}
+
+.signup-container button {
+    background-color: #cb3cff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+    padding: 10px;
+    margin-top:20px;
+}
+
+.signup-container button:hover {
+    background-color: #a900d9;
+}
+
+.password-container {
+    position: relative;
+}
+
+.password-container .toggle-password {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #cb3cff;
+}
+
+::placeholder {
+    color: #ccc;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    display: none;
+}
+
+.dropdown :hover {
+    background-color: #cb3cff;
+}
+
+@media (min-width: 769px) {
+    #sidebar-toggle {
+        display: none; 
+    }
+}
+
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%); 
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 250px;
+        z-index: 1000;
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .sidebar-close {
+        display: block; 
+    }
+
+    .sidebar-toggle {
+        display: block; 
+    }
+
+    .sidebar h2, .sidebar ul li a {
+        font-size: 14px; 
+        padding: 8px;
+    }
+
+    .user-profile {
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    .user-info {
+        margin-left: 30px;
+    }
+
+    table {
+        width: 100%;
+        white-space: nowrap;
+        display: block;
+        overflow-x: auto;
+    }
+
+    thead, tbody, tr {
+        width: 100%; 
+        display: table;
+        table-layout: fixed;
+    }
+
+    th, td {
+        width: auto; 
+        text-align: center;
+        word-wrap: nowrap; 
+    }
+
+    th {
+        font-size: 14px;
+    }
+
+    .actions button {
+        padding: 5px 8px;
+        font-size: 12px;
+    }
+
+    .main-content {
+        width: 100%;
+        margin-left: 0; 
+    }
+
+    .icons {
+        gap: 10px;
+    }
+
+    .popup-content {
+        width: 90%;
+    }
+
+    .cards {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    #menu-icon {
+        display: block;
+    }
+}
