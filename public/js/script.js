@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
         popupForm.style.display = "flex";
     });
 
-    // Close popup 
+    // Close popup when clicking "X" button
     closePopup.addEventListener("click", function () {
         popupForm.style.display = "none";
     });
@@ -159,35 +159,51 @@ function togglePasswordVisibility(id) {
 }
 
 //login
-document.getElementById("loginForm").addEventListener("submit", async function (event) {
+/*document.getElementById("loginForm").addEventListener("submit", async function (event) {
     event.preventDefault();
 
-    const empId = document.getElementById("emp_id").value;
+    const emp_id = document.getElementById("emp_id").value.trim();
+    const role = document.getElementById("role").value;
     const password = document.getElementById("password").value;
 
-    try {
-        const response = await fetch("/api/auth/login", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({ emp_id: empId, password }),
-        });
+    console.log("Sending Data:", { emp_id, role, password });
 
-        const data = await response.json();
+    const response = await fetch("/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ emp_id, role, password })
+    });
 
-        if (response.ok) {
-            alert("Login Successful");
-            if (data.role === "admin") {
-                window.location.href = "/admin"; // Redirect admin
-            } else {
-                window.location.href = "/user"; // Redirect user
-            }
-        } else {
-            alert(data.message);
-        }
-    } catch (error) {
-        console.error("Error:", error);
-        alert("An error occurred. Please try again.");
+    const result = await response.json();
+    console.log("Response:", result);
+
+    if (result.success) {
+        window.location.href = result.redirect;
+    } else {
+        alert(result.message);
+    }
+});
+*/
+
+document.getElementById("loginForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const emp_id = document.getElementById("emp_id").value;
+    const role = document.getElementById("role").value;
+    const password = document.getElementById("password").value;
+
+    const response = await fetch("/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ emp_id, role, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+        localStorage.setItem("adminInfo", JSON.stringify(data.user)); 
+        window.location.href = data.redirect; 
+    } else {
+        alert(data.message); 
     }
 });

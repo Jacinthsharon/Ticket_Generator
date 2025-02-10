@@ -1,29 +1,32 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
-const User = require("../models/User");
+const User = require("../models/User"); 
 
 const router = express.Router();
 
-// Login Route
 router.post("/login", async (req, res) => {
-    console.log("Login route hit!");  // Check if this prints in the console
-    console.log("Request body:", req.body);  // Check if data is coming correctly
+    const { emp_id, role, password } = req.body;
 
     try {
-        const { emp_id, password } = req.body;
-        if (!emp_id || !password) {
-            return res.status(400).json({ message: "Missing fields" });
-        }
+        console.log("Received Login Request:", { emp_id, role });
 
         const user = await User.findOne({ emp_id });
+
         if (!user) {
-            return res.status(400).json({ message: "User not found!" });
+            return res.status(400).json({ message: "Invalid Employee ID" });
         }
 
-        res.json({ message: "Login successful", role: "admin" });
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(400).json({ message: "Incorrect Password" });
+        }
+
+        const userData = { name: user.name, emp_id: user.emp_id, role };
+
+        return res.json({ success: true, redirect: `/${role}`, user: userData });
     } catch (error) {
-        console.error("Error in login route:", error);
-        res.status(500).json({ message: "Server error" });
+        console.error("Error in login:", error);
+        res.status(500).json({ message: "Server Error" });
     }
 });
 
