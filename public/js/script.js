@@ -160,33 +160,34 @@ function togglePasswordVisibility(id) {
 
 //login
 document.getElementById("loginForm").addEventListener("submit", async function (event) {
-    event.preventDefault(); 
+    event.preventDefault();
 
-    const emp_id = document.getElementById("emp_id").value.trim(); 
-    const password = document.getElementById("password").value.trim();
-
-    console.log("Sending data:", { emp_id, password }); 
+    const empId = document.getElementById("emp_id").value;
+    const password = document.getElementById("password").value;
 
     try {
-        const response = await fetch("http://localhost:3000/login", { 
+        const response = await fetch("/api/auth/login", {
             method: "POST",
-            headers: { "Content-Type": "application/json" }, 
-            body: JSON.stringify({ emp_id, password }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ emp_id: empId, password }),
         });
-
-        console.log("Response status:", response.status); 
 
         const data = await response.json();
 
         if (response.ok) {
-            alert(data.message);
-            sessionStorage.setItem("isAdmin", data.isAdmin);
-            window.location.href = data.isAdmin ? "/admin" : "/user";
+            alert("Login Successful");
+            if (data.role === "admin") {
+                window.location.href = "/admin"; // Redirect admin
+            } else {
+                window.location.href = "/user"; // Redirect user
+            }
         } else {
-            alert(data.message); 
+            alert(data.message);
         }
     } catch (error) {
         console.error("Error:", error);
-        alert("An error occurred while logging in.");
+        alert("An error occurred. Please try again.");
     }
 });
