@@ -19,14 +19,14 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td>${index + 1}</td>
                         <td>${create.emp_id}</td>
                         <td>${create.name}</td>
-                        <td>${create.password}</td>
+                        <td>********</td>  <!-- Mask password -->
                         <td>
                             <button class="delete-btn" data-id="${create._id}">Delete</button>
                         </td>
                     `;
                     tableBody.appendChild(row);
                 });
-
+    
                 document.querySelectorAll(".delete-btn").forEach(button => {
                     button.addEventListener("click", function () {
                         const id = this.dataset.id;
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => console.error("Error fetching creates:", error));
     }
-
+    
     function deleteCreate(id) {
         if (!confirm("Are you sure you want to delete this record?")) return;
 

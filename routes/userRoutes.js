@@ -1,40 +1,41 @@
 const express = require('express');
 const router = express.Router();
 const Create = require('../models/Create');  
+const bcrypt = require('bcrypt');
 
 router.get("/creates", async (req, res) => {
     try {
-      console.log("Fetching records...");
-      const creates = await Create.find();
-      console.log("Records found:", creates);
-      res.json(creates);
+        const creates = await Create.find().select("-password"); // Exclude passwords
+        res.json(creates);
     } catch (error) {
-      console.error("Error fetching records:", error);
-      res.status(500).json({ error: "Internal Server Error" });
+        res.status(500).json({ error: "Internal Server Error" });
     }
-  });
+});
 
 router.get("/creates/:id", async (req, res) => {
     try {
-        console.log("Fetching record with ID:", req.params.id);
-        
-        const create = await Create.findById(req.params.id);
-        
-        if (!create) {
-            return res.status(404).json({ error: "Record not found" });
-        }
-        
+        const create = await Create.findById(req.params.id).select("-password"); // Exclude password
+        if (!create) return res.status(404).json({ error: "Record not found" });
         res.json(create);
     } catch (error) {
-        console.error("Error fetching record:", error);
         res.status(500).json({ error: "Internal Server Error" });
     }
 });
 
 router.post('/creates', async (req, res) => {
     try {
-        const newCreate = new Create(req.body);
+        const { emp_id, name, password } = req.body;
+
+        if (!password) {
+            return res.status(400).json({ error: "Password is required" });
+        }
+
+        // Hash password before saving
+        const hashedPassword = await bcrypt.hash(password, 10);
+
+        const newCreate = new Create({ emp_id, name, password: hashedPassword });
         await newCreate.save();
+
         res.status(201).json({ message: 'Created successfully', data: newCreate });
     } catch (error) {
         res.status(500).json({ error: 'Error saving create', details: error.message });
