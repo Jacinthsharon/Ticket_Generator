@@ -77,22 +77,51 @@
             <h2 style="color: #3d78e3;">Assign Task</h2>
             <form id="task-form">
                 <label for="task-emp-id">Employee ID</label>
-                <input type="text" id="task-emp-id" required>
+                <select id="task-emp-id" required>
+                    <option value="">Select Employee ID</option>
+                    <option value="001">001</option>
+                    <option value="002">002</option>
+                    <option value="003">003</option>
+                    <option value="004">004</option>
+                    <option value="005">005</option>
+                </select>
     
                 <label for="task-name">Name</label>
-                <input type="text" id="task-name" required>
+                <select id="task-name" required>
+                    <option value="">Select Name</option>
+                    <option value="AAA">AAA</option>
+                    <option value="BBB">BBB</option>
+                    <option value="CCC">CCC</option>
+                    <option value="DDD">DDD</option>
+                    <option value="EEE">EEE</option>
+                </select>
     
                 <label for="task-work">Work</label>
-                <input type="text" id="task-work" required>
+                <select id="task-work" required>
+                    <option value="">Select Work</option>
+                    <option value="Documentation">Documentation</option>
+                    <option value="Development">Development</option>
+                    <option value="Testing">Testing</option>
+                    <option value="Design">Design</option>
+                    <option value="Deployment">Deployment</option>
+                </select>
     
                 <label for="task-date">Date</label>
                 <input type="date" id="task-date" required>
+
+                <label for="task-priority">Priority</label>
+                <select id="task-priority" required>
+                    <option value="">Select Priority</option>
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                </select>    
     
                 <button type="submit">Add Task</button>
             </form>
         </div>
     </div>
-        
+            
     <script>
         document.addEventListener("DOMContentLoaded", () => {
     const adminInfoString = localStorage.getItem("adminInfo");

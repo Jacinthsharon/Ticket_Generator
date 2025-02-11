@@ -1,5 +1,4 @@
 const express = require("express");
-const bcrypt = require("bcryptjs");
 const Create = require("../models/Create"); // Adjust path if necessary
 const User = require("../models/User"); // Assuming Admins are stored here
 const router = express.Router();
@@ -28,9 +27,8 @@ router.post("/login", async (req, res) => {
             return res.status(400).json({ message: "Invalid role selected" });
         }
 
-        // Compare passwords
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
+        // Compare passwords (plain text, not recommended for production)
+        if (password !== user.password) {
             return res.status(400).json({ message: "Incorrect Password" });
         }
 

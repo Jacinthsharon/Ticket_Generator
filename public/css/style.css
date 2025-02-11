@@ -318,8 +318,8 @@ button[type="submit"]:hover {
 
 .close-btn {
     position: absolute;
-    top: 230px;
-    right: 570px;
+    top: 8px;
+    right: 10px;
     font-size: 24px;
     cursor: pointer;
     color: #405189;

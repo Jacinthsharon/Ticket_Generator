@@ -22,7 +22,7 @@ router.get("/creates/:id", async (req, res) => {
     }
 });
 
-router.post('/creates', async (req, res) => {
+router.post("/creates", async (req, res) => {
     try {
         const { emp_id, name, password } = req.body;
 
@@ -30,15 +30,12 @@ router.post('/creates', async (req, res) => {
             return res.status(400).json({ error: "Password is required" });
         }
 
-        // Hash password before saving
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        const newCreate = new Create({ emp_id, name, password: hashedPassword });
+        const newCreate = new Create({ emp_id, name, password });
         await newCreate.save();
 
-        res.status(201).json({ message: 'Created successfully', data: newCreate });
+        res.status(201).json({ message: "Created successfully", data: newCreate });
     } catch (error) {
-        res.status(500).json({ error: 'Error saving create', details: error.message });
+        res.status(500).json({ error: "Error saving create", details: error.message });
     }
 });
 
