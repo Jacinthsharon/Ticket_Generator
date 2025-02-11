@@ -1,7 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #070e26;
-    color: white;
+    background-color: #ffffff;
+    color: #405189;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -11,7 +11,7 @@ body {
 .sidebar {
     width: 250px;
     height: 100vh;
-    background-color: #0b1739;
+    background-color: #405189;
     padding: 20px;
     position: fixed; 
     left: 0;
@@ -42,7 +42,7 @@ body {
 .menu-btn {
     background: none;
     border: none;
-    color: white;
+    color: #ffffff;
     font-size: 1.5em;
     cursor: pointer;
     display: none; 
@@ -51,14 +51,14 @@ body {
 #menu-icon {
     font-size: 30px;
     cursor: pointer;
-    color: white;
+    color: #ffffff;
     display: none; 
 }
 
 #close-icon {
     font-size: 30px;
     cursor: pointer;
-    color: white;
+    color: #ffffff;
 }
 
 .sidebar.closed {
@@ -75,7 +75,7 @@ body {
 }
 
 .sidebar h2 {
-    color: white;
+    color: #ffffff;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -90,7 +90,7 @@ body {
 }
 
 .sidebar ul li a {
-    color: white;
+    color: #ffffff;
     text-decoration: none;
     display: block;
     padding: 10px;
@@ -99,7 +99,7 @@ body {
 }
 
 .sidebar ul li a:hover {
-    background-color: rgba(203, 60, 255, 0.5);
+    background-color: rgba(243, 243, 249, 0.5);
 }
 
 .main-content {
@@ -116,7 +116,7 @@ body {
 }
 
 .card {
-    background-color: #0b1739;
+    background-color: #f3f3f9;
     padding: 65px;
     border-radius: 10px;
     text-align: center;
@@ -140,15 +140,15 @@ body {
     flex-grow: 1;
     padding: 10px;
     margin-right: 10px;
-    border: 1px solid white;
-    background: #0b1739;
-    color: white;
+    border: 1px solid #405189;
+    background: #f3f3f9;
+    color: #405189;
     border-radius: 5px;
 }
 
 #add-task-btn {
-    background-color: #cb3cff;
-    color: white;
+    background-color: #3d78e3;
+    color: #ffffff;
     border: none;
     padding: 10px 15px;
     cursor: pointer;
@@ -157,12 +157,12 @@ body {
 }
 
 #add-task-btn:hover {
-    background-color: #a02cc4;
+    background-color: #3466c1;
 }
 
 #task-report-btn{
-    background-color: #cb3cff;
-    color: white;
+    background-color: #3d78e3;
+    color: #ffffff;
     border: none;
     padding: 10px 15px;
     cursor: pointer;
@@ -171,7 +171,7 @@ body {
 }
 
 #task-report-btn:hover {
-    background-color: #a02cc4;
+    background-color: #3466c1;
 }
 
 .user-profile {
@@ -181,7 +181,7 @@ body {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: white;
+    color: #405189;
 }
 
 .profile-pic {
@@ -212,15 +212,15 @@ body {
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #0b1739;
+    background-color: #f3f3f9;
     border-radius: 10px;
 }
 
 thead {
-    background-color: #cb3cff;
+    background-color: #3d78e3;
+    color: #ffffff;
     display: table-header-group; 
     width: 100%; 
-
 }
 
 th, td {
@@ -231,8 +231,8 @@ th, td {
 }
 
 th {
-    background-color: #cb3cff; 
-    color: white;
+    background-color: #3d78e3; 
+    color: #ffffff;
     width: auto;
 }
 
@@ -245,9 +245,9 @@ tbody tr:hover {
 }
 
 .edit-btn, .save-btn, .delete-btn {
-    background-color: #cb3cff;
+    background-color: #67b173;
     border: none;
-    color: white;
+    color: #ffffff;
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 5px;
@@ -256,15 +256,15 @@ tbody tr:hover {
 }
 
 .delete-btn {
-    background-color: red;
+    background-color: #f17171;
 }
 
 .edit-btn:hover, .save-btn:hover {
-    background-color: #a02cc4;
+    background-color: #579561;
 }
 
 .delete-btn:hover {
-    background-color: darkred;
+    background-color: #cd6060;
 }
 
 .popup-form {
@@ -280,11 +280,11 @@ tbody tr:hover {
 }
 
 .popup-content {
-    background-color: #0b1739;
+    background-color: #f3f3f9;
     padding: 20px;
     border-radius: 10px;
     width: 400px;
-    color: white;
+    color: #000000;
     text-align: center;
 }
 
@@ -297,14 +297,14 @@ tbody tr:hover {
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
-    border: 1px solid #cb3cff;
-    background-color: #0b1739;
-    color: white;
+    border: 1px solid #ced4da;
+    background-color: #f3f3f9;
+    color: #212529;
 }
 
 button[type="submit"] {
-    background-color: #cb3cff;
-    color: white;
+    background-color: #67b173;
+    color: #ffffff;
     padding: 10px;
     border: none;
     cursor: pointer;
@@ -313,7 +313,7 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-    background-color: #a02cc4;
+    background-color: #579561;
 }
 
 .close-btn {
@@ -322,7 +322,7 @@ button[type="submit"]:hover {
     right: 570px;
     font-size: 24px;
     cursor: pointer;
-    color: white;
+    color: #405189;
 }
 
 
@@ -345,7 +345,7 @@ button[type="submit"]:hover {
 }
 
 .icon i {
-    color: white;
+    color: #405189;
     font-size: 1.5em; 
 }
 
@@ -353,8 +353,8 @@ button[type="submit"]:hover {
     position: absolute;
     top: -10px;
     right: -10px;
-    background-color: red;
-    color: white;
+    background-color: #f17171;
+    color: #405189;
     border-radius: 50%;
     padding: 2px 6px;
     font-size: 0.8em;
@@ -364,8 +364,8 @@ button[type="submit"]:hover {
     display: none;
     position: absolute;
     right: 0;
-    background-color: #0b1739;
-    border: 1px solid white;
+    background-color: #f3f3f9;
+    border: 1px solid #405189;
     border-radius: 5px;
     padding: 10px;
     width: 200px;
@@ -380,13 +380,13 @@ button[type="submit"]:hover {
 
 .dropdown ul li {
     padding: 8px 0;
-    color: white;
+    color: #405189;
     cursor: pointer;
     font-size: medium;
 }
 
 .dropdown ul li:hover {
-    background-color: rgba(203, 60, 255, 0.5);
+    background-color: rgba(64, 81, 137, 0.2);
 }
 
 .dropdown.active {
@@ -395,7 +395,7 @@ button[type="submit"]:hover {
 
 .login-container {
     margin-top: 100px;
-    background-color: #0b1739;
+    background-color: #f3f3f9;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -405,7 +405,7 @@ button[type="submit"]:hover {
 
 .login-container h2 {
     margin-bottom: 20px;
-    color: white;
+    color: #405189;
 }
 
 .login-container input, .login-container select, .login-container button {
@@ -414,24 +414,24 @@ button[type="submit"]:hover {
     margin: 20px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
-    border: 1px solid #cb3cff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .login-container input, .login-container select {
-    background-color: #070e26;
-    color: white;
+    background-color: #ffffff;
+    color: #405189;
 }
 
 .login-container button {
-    background-color: #cb3cff;
-    color: white;
+    background-color: #67b173;
+    color: #ffffff;
     border: none;
     cursor: pointer;
     width:150px;
 }
 
 .login-container button:hover {
-    background-color: #a900d9;
+    background-color: #579561;
 }
 
 .logo {
@@ -451,7 +451,7 @@ button[type="submit"]:hover {
 }
 
 .signup-container {
-    background-color: #0b1739;
+    background-color: #f3f3f9;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -462,22 +462,22 @@ button[type="submit"]:hover {
 
 .signup-container h2 {
     margin-bottom: 20px;
-    color: white;
+    color: #405189;
 }
 
 .signup-container input {
     width: 350px;
     padding: 10px;
     margin: 20px 0;
-    border: 1px solid #cb3cff;
+    border: 1px solid #ced4da;
     border-radius: 5px;
-    background-color: #070e26;
-    color: white;
+    background-color: #ffffff;
+    color: #405189;
 }
 
 .signup-container button {
-    background-color: #cb3cff;
-    color: white;
+    background-color: #67b173;
+    color: #ffffff;
     border: none;
     cursor: pointer;
     width: 150px;
@@ -486,7 +486,7 @@ button[type="submit"]:hover {
 }
 
 .signup-container button:hover {
-    background-color: #a900d9;
+    background-color: #579561;
 }
 
 .password-container {
@@ -499,7 +499,7 @@ button[type="submit"]:hover {
     top: 50%;
     transform: translateY(-50%);
     cursor: pointer;
-    color: #cb3cff;
+    color: #405189;
 }
 
 ::placeholder {
@@ -507,13 +507,13 @@ button[type="submit"]:hover {
 }
 
 .error-message {
-    color: red;
+    color: #f17171;
     font-size: 14px;
     display: none;
 }
 
 .dropdown :hover {
-    background-color: #cb3cff;
+    background-color: rgba(64, 81, 137, 0.1);
 }
 
 @media (min-width: 769px) {

@@ -55,9 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td>${report.work}</td>
                     <td>${new Date(report.date).toLocaleDateString()}</td>
                     <td>${report.status}</td>
-                    <td>
-                        <button class="edit-btn" data-id="${report._id}">Edit</button>
-                    </td>
                 `;
                 tableBody.appendChild(row);
             });
