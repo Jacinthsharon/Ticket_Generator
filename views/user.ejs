@@ -20,13 +20,11 @@
             <li><a href="/user">Dashboard</a></li>
             <li><a href="/login">Logout</a></li>
         </ul>
-        <div class="user-profile">
-            <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
-            <div class="user-info">
-                <p class="user-name" id="userName"></p>
-                <p class="user-id" id="userId"></p>
-            </div>
+        <div class="user-info">
+            <p class="user-name" id="userName" style="margin-top: 380px; text-align: center; font-size: 18px;"></p>
+            <p class="user-id" id="userId" style="text-align: center; font-size: 18px;"></p>
         </div>
+        
     </div>
 
     <div class="main-content">
@@ -52,6 +50,8 @@
                     <th>S.No</th>
                     <th>Work</th>
                     <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody id="table-body">
@@ -62,9 +62,12 @@
 
     <div id="popup-form" class="popup-form">
         <div class="popup-content">
-            <span id="close-popup" class="close-btn">&times;</span>
+            <span id="close-popup" class="close-btn" style="top: 185px; right: 570px;">&times;</span>
             <h2>Task Report</h2>
             <form id="task-form">
+                <label for="emp_id">Emp_id</label>
+                <input type="text" id="emp_id" required>
+
                 <label for="work">Work</label>
                 <input type="text" id="work" required>
                 
@@ -82,7 +85,33 @@
         </div>
     </div>
 
+    <script>
+document.addEventListener("DOMContentLoaded", () => {
+    const userInfoString = localStorage.getItem("adminInfo");
+
+    if (!userInfoString || userInfoString === "undefined") {
+        console.warn("User info not found or invalid!");
+        return;
+    }
+
+    try {
+        const userInfo = JSON.parse(userInfoString);
+
+        if (userInfo.name && userInfo.emp_id) {
+            document.getElementById("userName").textContent = `Name: ${userInfo.name}`;
+            document.getElementById("userId").textContent = `Emp ID: ${userInfo.emp_id}`;
+        } else {
+            console.warn("Incomplete user data");
+            localStorage.removeItem("adminInfo");
+        }
+    } catch (error) {
+        console.error("Error parsing userInfo:", error);
+        localStorage.removeItem("adminInfo");
+    }
+});
+
+    </script>
     <script src="/js/script.js"></script>
-    <script src="/js/user.js"></script>
+    <script src="/js/report.js"></script>
 </body>
 </html>

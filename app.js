@@ -14,6 +14,7 @@ const Login = require("./models/Login");
 const User = require("./models/User");
 const bcrypt = require("bcryptjs");
 const loginRoutes = require("./routes/auth"); 
+const reportRoutes = require("./routes/reportRoutes");
 
 const app = express();
 
@@ -136,6 +137,9 @@ app.get('/admin',(req,res) => {
       res.status(500).json({ message: "Server Error" });
   }
 });*/
+
+
+app.use('/api/reports', reportRoutes);
 
 app.use("/auth", loginRoutes);
 

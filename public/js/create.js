@@ -87,3 +87,34 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fetchCreates();
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const loginForm = document.getElementById("loginForm");
+
+    loginForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const emp_id = document.getElementById("emp_id").value;
+        const role = document.getElementById("role").value;
+        const password = document.getElementById("password").value;
+
+        const response = await fetch("/auth/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ emp_id, role, password }),
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            // Store user details in localStorage
+            localStorage.setItem("adminInfo", JSON.stringify(data.user));
+
+            // Redirect to respective dashboard
+            window.location.href = data.redirect;
+        } else {
+            alert(data.message);
+        }
+    });
+});
