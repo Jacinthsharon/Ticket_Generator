@@ -144,25 +144,3 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-document.addEventListener("DOMContentLoaded", () => {
-    const adminInfoString = localStorage.getItem("adminInfo");
-
-    if (!adminInfoString || adminInfoString === "undefined") {
-        console.warn("User info not found or invalid!");
-        return;
-    }
-
-    try {
-        const adminInfo = JSON.parse(adminInfoString);
-        if (adminInfo.name && adminInfo.emp_id) {
-            document.getElementById("adminName").textContent = `Name: ${adminInfo.name}`;
-            document.getElementById("adminId").textContent = `Emp ID: ${adminInfo.emp_id}`;
-        } else {
-            console.warn("Incomplete user data");
-            localStorage.removeItem("adminInfo");
-        }
-    } catch (error) {
-        console.error("Error parsing adminInfo:", error);
-        localStorage.removeItem("adminInfo");
-    }
-});

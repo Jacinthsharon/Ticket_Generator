@@ -21,8 +21,8 @@
             <li><a href="/login">Logout</a></li>
         </ul>
         <div class="user-info">
-            <p class="user-name" id="userName" style="margin-top: 380px; text-align: center; font-size: 18px;"></p>
-            <p class="user-id" id="userId" style="text-align: center; font-size: 18px;"></p>
+            <p class="user-name" id="userName" style="margin-top: 380px; text-align: center; font-size: 18px; color:#ffffff"></p>
+            <p class="user-id" id="userId" style="text-align: center; font-size: 18px; color: #ffffff;"></p>
         </div>
         
     </div>
@@ -86,7 +86,10 @@
 
     <script>
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("Dashboard script loaded");
+
     const userInfoString = localStorage.getItem("adminInfo");
+    console.log("Retrieved userInfoString:", userInfoString);
 
     if (!userInfoString || userInfoString === "undefined") {
         console.warn("User info not found or invalid!");
@@ -95,10 +98,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
         const userInfo = JSON.parse(userInfoString);
+        console.log("Parsed userInfo:", userInfo);
 
         if (userInfo.name && userInfo.emp_id) {
-            document.getElementById("userName").textContent = `Name: ${userInfo.name}`;
-            document.getElementById("userId").textContent = `Emp ID: ${userInfo.emp_id}`;
+            const userNameElement = document.getElementById("userName");
+            const userIdElement = document.getElementById("userId");
+
+            console.log("UserName Element:", userNameElement);
+            console.log("UserId Element:", userIdElement);
+
+            if (userNameElement && userIdElement) {
+                userNameElement.textContent = `Name: ${userInfo.name}`;
+                userIdElement.textContent = `Emp ID: ${userInfo.emp_id}`;
+                console.log("User details updated in DOM");
+            } else {
+                console.error("User elements not found in DOM");
+            }
         } else {
             console.warn("Incomplete user data");
             localStorage.removeItem("adminInfo");

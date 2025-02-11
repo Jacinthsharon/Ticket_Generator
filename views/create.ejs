@@ -21,10 +21,10 @@
             <li><a href="/create">Users</a></li>
             <li><a href="/login">Logout</a></li>
         </ul>
-            <div class="user-info">
-                <p class="user-name" id="adminName" style="margin-top: 320px; text-align: center; font-size: 18px;"></p>
-                <p class="user-id" id="adminId" style="text-align: center; font-size: 18px;"></p>
-            </div>
+        <div class="user-info">
+            <p class="user-name" id="adminName" style="margin-top: 320px; text-align: center; font-size: 18px; color: #ffffff;"></p>
+            <p class="user-id" id="adminId" style="text-align: center; font-size: 18px; color: #ffffff;"></p>
+        </div>
     </div>
 
     <div class="main-content">
@@ -91,7 +91,7 @@
     const adminInfoString = localStorage.getItem("adminInfo");
 
     if (!adminInfoString || adminInfoString === "undefined") {
-        console.warn("Admin info not found or invalid!");
+        console.warn("User info not found or invalid!");
         return;
     }
 
@@ -101,21 +101,17 @@
             document.getElementById("adminName").textContent = `Name: ${adminInfo.name}`;
             document.getElementById("adminId").textContent = `Emp ID: ${adminInfo.emp_id}`;
         } else {
-            console.warn("Incomplete admin data");
-            localStorage.removeItem("adminInfo"); 
+            console.warn("Incomplete user data");
+            localStorage.removeItem("adminInfo");
         }
     } catch (error) {
         console.error("Error parsing adminInfo:", error);
-        localStorage.removeItem("adminInfo"); 
+        localStorage.removeItem("adminInfo");
     }
 });
 
-document.querySelector('a[href="/login"]').addEventListener("click", () => {
-    localStorage.removeItem("adminInfo");
-});
-
+        
     </script>
-
     <script src="/js/create.js"></script>
     <script src="/js/script.js"></script>
 
