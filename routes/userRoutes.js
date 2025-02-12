@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const Create = require('../models/Create');  
-const bcrypt = require('bcrypt');
 
 router.get("/creates", async (req, res) => {
     try {
