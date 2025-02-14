@@ -1,26 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const addTaskBtn = document.getElementById("add-task-btn");
-    const popupForm = document.getElementById("task-popup-form");
-    const closePopup = document.getElementById("close-task-popup");
-
-    if (addTaskBtn && popupForm) {
-        addTaskBtn.addEventListener("click", function () {
-            popupForm.style.display = "flex";
-        });
-    } else {
-        console.error("Add Task button or popup form not found!");
-    }
-
-    if (closePopup && popupForm) {
-        closePopup.addEventListener("click", function () {
-            popupForm.style.display = "none";
-        });
-    } else {
-        console.error("Close popup button not found!");
-    }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
     const taskForm = document.getElementById("task-form");
     const taskTableBody = document.getElementById("task-table-body");
     const popupForm = document.getElementById("task-popup-form");
@@ -50,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <td>${task.name}</td>
             <td>${task.work}</td>
             <td>${new Date(task.date).toDateString()}</td>
+            <td>${task.priority}</td>
             <td>
                 <button class="edit-btn" data-id="${task._id}">Edit</button>
                 <button class="delete-btn" data-id="${task._id}">Delete</button>
@@ -65,12 +44,13 @@ document.addEventListener("DOMContentLoaded", function () {
         const name = document.getElementById("task-name").value;
         const work = document.getElementById("task-work").value;
         const date = document.getElementById("task-date").value;
+        const priority = document.getElementById("task-priority").value; // Get priority value
 
         if (editingTaskId) {
             fetch(`/api/tasks/${editingTaskId}`, {
                 method: 'PUT',
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ emp_id, name, work, date })
+                body: JSON.stringify({ emp_id, name, work, date, priority })
             })
             .then(response => response.json())
             .then(updatedTask => {
@@ -84,7 +64,7 @@ document.addEventListener("DOMContentLoaded", function () {
             fetch('/api/tasks', {
                 method: 'POST',
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ emp_id, name, work, date })
+                body: JSON.stringify({ emp_id, name, work, date, priority })
             })
             .then(response => response.json())
             .then(task => {
@@ -119,6 +99,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         document.getElementById("task-name").value = taskToEdit.name;
                         document.getElementById("task-work").value = taskToEdit.work;
                         document.getElementById("task-date").value = taskToEdit.date.split("T")[0];
+                        document.getElementById("task-priority").value = taskToEdit.priority;
 
                         editingTaskId = taskId;
                         popupForm.style.display = "flex";
@@ -142,5 +123,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
     fetchTasks();
 });
-
-

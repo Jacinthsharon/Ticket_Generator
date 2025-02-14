@@ -4,13 +4,13 @@ const router = express.Router();
 
 router.post('/tasks', async (req, res) => {
     try {
-        const { emp_id, name, work, date } = req.body;
+        const { emp_id, name, work, date, priority } = req.body;
 
-        if (!emp_id || !name || !work || !date) {
+        if (!emp_id || !name || !work || !date || !priority) {
             return res.status(400).json({ error: 'All fields are required' });
         }
 
-        const newTask = new Task({ emp_id, name, work, date });
+        const newTask = new Task({ emp_id, name, work, date, priority });
         await newTask.save();
 
         res.status(201).json(newTask);
@@ -47,15 +47,15 @@ router.delete('/tasks/:id', async (req, res) => {
 router.put('/tasks/:id', async (req, res) => {
     try {
         const { id } = req.params;
-        const { emp_id, name, work, date } = req.body;
+        const { emp_id, name, work, date, priority } = req.body;
 
-        if (!emp_id || !name || !work || !date) {
+        if (!emp_id || !name || !work || !date || !priority) {
             return res.status(400).json({ error: 'All fields are required' });
         }
 
         console.log("Received PUT request for ID:", id);
 
-        const updatedTask = await Task.findByIdAndUpdate(id, { emp_id, name, work, date }, { new: true });
+        const updatedTask = await Task.findByIdAndUpdate(id, { emp_id, name, work, date, priority }, { new: true });
 
         if (!updatedTask) {
             return res.status(404).json({ error: 'Task not found' });
